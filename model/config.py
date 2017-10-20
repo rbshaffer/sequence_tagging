@@ -56,7 +56,8 @@ class Config():
 
 
     # general config
-    dir_output = "results/test/"
+    #dir_output = "results/test/"
+    dir_output = '/home/rbshaffer/sequence_tagging/results/test/'
     dir_model  = dir_output + "model.weights/"
     path_log   = dir_output + "log.txt"
 
@@ -65,35 +66,51 @@ class Config():
     dim_char = 100
 
     # glove files
-    filename_glove = "data/glove.6B/glove.6B.{}d.txt".format(dim_word)
+    #filename_glove = "data/glove.6B/glove.6B.{}d.txt".format(dim_word)
     # trimmed embeddings (created from glove_filename with build_data.py)
-    filename_trimmed = "data/glove.6B.{}d.trimmed.npz".format(dim_word)
+    #filename_trimmed = "data/glove.6B.{}d.trimmed.npz".format(dim_word)
+
+    filename_glove = "/home/rbshaffer/sequence_tagging/data/glove.6B/glove.6B.{}d.txt".format(dim_word)
+    # trimmed embeddings (created from glove_filename with build_data.py)
+    filename_trimmed = "/home/rbshaffer/sequence_tagging/data/glove.6B.{}d.trimmed.npz".format(dim_word)
+
     use_pretrained = True
 
     # dataset
-    # filename_dev = "data/coNLL/eng/eng.testa.iob"
-    # filename_test = "data/coNLL/eng/eng.testb.iob"
-    # filename_train = "data/coNLL/eng/eng.train.iob"
+    #filename_dev = "data/coNLL/eng/eng.testa.iob"
+    #filename_test = "data/coNLL/eng/eng.testb.iob"
+    #filename_train = "data/coNLL/eng/eng.train.iob"
 
-    filename_dev = filename_test = filename_train = "data/test.txt" # test
+    # filename_dev = filename_test = filename_train = "data/test.txt" # test
+    filename_dev = 'data/data_v1_dev.txt'
+    filename_test = 'data/data_v1_test_short.txt'
+    filename_train = 'data/data_v1_train.txt'
 
     max_iter = None # if not None, max number of examples in Dataset
 
     # vocab (created from dataset with build_data.py)
-    filename_words = "data/words.txt"
-    filename_tags = "data/tags.txt"
-    filename_chars = "data/chars.txt"
+    # filename_words = "data/words.txt"
+    # filename_tags = "data/tags.txt"
+    # filename_chars = "data/chars.txt"
+
+    filename_words = "/home/rbshaffer/sequence_tagging/data/words.txt"
+    filename_tags = "/home/rbshaffer/sequence_tagging/data/tags.txt"
+    filename_chars = "/home/rbshaffer/sequence_tagging/data/chars.txt"
 
     # training
     train_embeddings = False
-    nepochs          = 15
+    #nepochs          = 15
+    nepochs          = 50
     dropout          = 0.5
-    batch_size       = 20
+    batch_size       = 10
     lr_method        = "adam"
-    lr               = 0.001
-    lr_decay         = 0.9
-    clip             = -1 # if negative, no clipping
-    nepoch_no_imprv  = 3
+    #lr               = 0.001
+    #lr_decay         = 0.9
+    #clip             = -1 # if negative, no clipping
+    lr               = 0.015
+    lr_decay         = 0.05
+    clip             = 5.0
+    nepoch_no_imprv  = 5
 
     # model hyperparameters
     hidden_size_char = 100 # lstm on chars
